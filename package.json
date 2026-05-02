@@ -1,0 +1,75 @@
+{
+  "name": "devops-ai",
+  "displayName": "DevOps AI",
+  "description": "AI vulnerability scanner and holistic auto-remediator",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.118.0"
+  },
+  "publisher": "Surendra doddi",
+"repository": {
+  "type": "git",
+  "url": "https://github.com/DoddiSurendra55555/devops-ai"
+},
+  "categories": [
+    "Other",
+    "Linters"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "devopsai.setApiKey",
+        "title": "DevOps AI: Set Gemini API Key"
+      },
+      {
+        "command": "devopsai.scanCurrentFile",
+        "title": "DevOps AI: Scan Current File"
+      },
+      {
+        "command": "devopsai.scanWorkspace",
+        "title": "DevOps AI: Scan Entire Workspace"
+      },
+      {
+        "command": "devopsai.secureEntireFile",
+        "title": "DevOps AI: Secure Entire File"
+      },
+      {
+        "command": "devopsai.applyDiff",
+        "title": "Accept AI Fix",
+        "icon": "$(check)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "devopsai.applyDiff",
+          "when": "resourceScheme == 'devopsai-preview'",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.118.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1"
+  }
+}
